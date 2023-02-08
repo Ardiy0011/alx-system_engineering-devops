@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "total 5 drwxr-xr-x 1 CHRIS 197121  0 Feb  8 07:03 0x00-shell_basics/ -rw-r--r-- 1 CHRIS 197121 12 Feb  8 06:30 README.md"
+mv /tmp/betty /tmp/my_first_directory
