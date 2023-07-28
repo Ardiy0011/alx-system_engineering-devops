@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Find the PID of the 7-highlander process
+
+PID=$(pgrep -f "7-highlander.sh")
+
+if [ -n "$PID" ]; then
+  # Send SIGINT (Ctrl+C) to terminate the process using pkill
+  pkill -INT -P "$PID"
+  echo "Terminated"
+fi
