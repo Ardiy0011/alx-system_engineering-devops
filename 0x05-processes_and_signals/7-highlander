@@ -1,1 +1,18 @@
 #!/usr/bin/env bash
+# prints text infinitely
+
+while true; do
+    case "$RANDOM" in
+        *)
+            echo "To infinity and beyond"
+            ;;
+    esac
+
+    case "$RANDOM" in
+        *)
+            echo "I am invincible!!!"
+            ;;
+    esac
+
+    sleep 2
+done
