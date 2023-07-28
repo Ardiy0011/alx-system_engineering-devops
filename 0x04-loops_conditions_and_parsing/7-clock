@@ -4,16 +4,12 @@
 i=0
 
 # While loop to print numbers from 1 to 118
-while [ $i -le 119 ]
-do
-  if [ $i -eq 0 ]; then
-    echo "Hour: 0"
-  elif [ $i -le 59 ]; then
-    echo "$i"
-  elif [ $i -eq 60 ]; then
-    echo "Hour: 1"
+while [ $i -le 779 ]; do
+
+  if [ $((i % 60)) -eq 0 ]; then
+    echo "Hour: $((i / 60))"
   else
-    echo "$((i - 60))"
+    echo "$((i % 60))"
   fi
 
   # Increment
