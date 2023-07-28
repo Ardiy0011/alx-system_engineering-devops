@@ -1,1 +1,10 @@
 #!/usr/bin/env bash
+
+while true; do
+    case "$RANDOM" in
+        *)
+            echo "To infinity and beyond"
+            ;;
+    esac
+    sleep 2
+done
