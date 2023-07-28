@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2009
+
+# Display list of currently running processes with hierarchy and filter lines containing "bash"
+ps -eHf | grep "bash"
