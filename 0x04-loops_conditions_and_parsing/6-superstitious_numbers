@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Initializing the loop iterator
+
 i=1
 
 # Loop to print numbers from 1 to 20

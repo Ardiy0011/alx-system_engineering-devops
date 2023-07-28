@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
 # Initializing the loop iterator
+
 i=1
 
 # iteration to print "Best School" 10 times
