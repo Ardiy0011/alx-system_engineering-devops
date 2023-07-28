@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Initializing the loop iterator
+i=1
+
+# Iteration to print "Best School" 10 times
+while [ $i -lt 11 ]
+do
+  if [ $i == 9 ]; then
+    echo "Best School "
+    echo "hi "
+  else
+    echo "Best School"
+  fi
+
+# increment
+  i=$((i + 1))
+done

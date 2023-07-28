@@ -1,0 +1,1 @@
+tasks for bash scripting and rsa generation

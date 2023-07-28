@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Initializing the loop iterator
+i=1
+
+# Loop to print numbers from 1 to 20
+while [ $i -lt 21 ]
+do
+  case $i in
+    5)
+      echo "$i bad luck from China"
+      ;;
+    10)
+      echo "$i bad luck from Japan"
+      ;;
+    18)
+      echo "$i bad luck from Italy"
+      ;;
+    *)
+      echo "$i"
+      ;;
+  esac
+
+# increment
+  i=$((i + 1))
+done

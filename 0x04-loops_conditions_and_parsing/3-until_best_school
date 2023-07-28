@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Initializing the loop iterator
+i=1
+
+# Use  until loop to display "Best School" 10 times
+until [ $i -ge 11 ]
+do
+  echo "Best School"
+
+# increment
+  i=$((i + 1))
+done
