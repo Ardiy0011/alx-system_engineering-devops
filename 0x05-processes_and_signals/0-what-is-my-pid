@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Display list of currently running processes with desired format
+# Display the PID of the script
 
-echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
-ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm
+echo "$$"
