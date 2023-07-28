@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# prints text infinitely
 
 while true; do
     case "$RANDOM" in
