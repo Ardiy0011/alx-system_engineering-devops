@@ -2,9 +2,6 @@
 # Find PID of the 4-to_infinity_and_beyond
 
 PID="$(pgrep -f 4-to_infinity_and_beyond)"
+kill "$PID"
 
-if [ "$PID" ]; then
-  # Send SIGTERM to terminate the m process
-  kill "$PID"
-  echo "Terminated"
-fi
+
