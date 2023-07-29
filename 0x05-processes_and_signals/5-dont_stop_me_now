@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Find PID of the 4-to_infinity_and_beyond
 
-PID= "$(pgrep -f 4-to_infinity_and_beyond)"
+PID="$(pgrep -f 4-to_infinity_and_beyond)"
 
 if [ -n "$PID" ]; then
   # Send SIGTERM to terminate the m process
