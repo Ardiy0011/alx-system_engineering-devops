@@ -27,9 +27,9 @@ int main(void)
 {
 	pid_t pid;
 	char i = 0;
-	int status;
 
-	for (i = 0; i < 5; i++)
+
+    for (i = 0; i < 5; i++)
 	{
 		pid = fork();
 		if (pid > 0)
@@ -40,9 +40,6 @@ int main(void)
 		else
 			exit(0);
 	}
-
-	for (i = 0; i < 5; i++)
-		wait(&status);
 
 	infinite_while();
 
