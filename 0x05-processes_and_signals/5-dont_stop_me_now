@@ -3,7 +3,7 @@
 
 PID="$(pgrep -f 4-to_infinity_and_beyond)"
 
-if [ -n "$PID" ]; then
+if [ "$PID" ]; then
   # Send SIGTERM to terminate the m process
   kill "$PID"
   echo "Terminated"
