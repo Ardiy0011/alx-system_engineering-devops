@@ -10,7 +10,7 @@ while true; do
 
     case "$RANDOM" in
         *)
-            echo "I am invincible!!!"
+            trap 'echo "I am invincible!!!"' SIGTERM 
             ;;
     esac
 
