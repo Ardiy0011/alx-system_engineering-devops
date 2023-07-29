@@ -2,9 +2,4 @@
 # Find the PID of the 4-to_infinity_and_beyond process
 
 PID=$(pgrep -f "4-to_infinity_and_beyond.sh")
-
-if [ -n "$PID" ]; then
-  # Send SIGINT (Ctrl+C) to terminate the process using pkill
-  pkill -INT -P "$PID"
-  echo "Terminated"
-fi
+pkill -INT -P "$PID"
