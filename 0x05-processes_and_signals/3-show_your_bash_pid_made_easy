@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
 # Search for processes in their name
 
-for pid_dir in /proc/*/; do
-    pid=$(basename "$pid_dir")
-    if [[ -r "$pid_dir/status" ]]; then
-        name=$(awk '/Name:/ {print $2}' "$pid_dir/status")
-        if [[ $name == *"bash"* ]]; then
-            echo "PID: $pid, Process Name: $name"
-        fi
-    fi
-done
+pgrep bash -l
