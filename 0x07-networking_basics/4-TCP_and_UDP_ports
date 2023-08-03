@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+#script that displays pid, name and listening socket
 
-netstart -pl
+netstat -pl
