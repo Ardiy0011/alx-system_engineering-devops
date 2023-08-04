@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# script that handles incoming data packets
+
+data()
+{
+    while IFS= read -r line;
+    #read line
+    do
+        echo "Received: $line"
+    done
+}
+
+# Listen on port 98 using netcat (nc)
+nc -l -p 98 -c data
