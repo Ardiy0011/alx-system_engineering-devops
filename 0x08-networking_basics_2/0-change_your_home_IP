@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 #script that change or resolve hostnames
 
-function resolve_host() {
+function resolve_host()
+{
     local hostname="$1"
-    local new_ip="$2"
+    local n_ip="$2"
 
     if grep -q -E "^$hostname\s+" /etc/hosts;
     then
-        sudo sed -i "s/^\($hostname\s\+\).*/\1$new_ip/" /etc/hosts
+        sudo sed -i "s/^\($hostname\s\+\).*/\1$n_ip/" /etc/hosts
     else
-        sudo bash -c "echo '$new_ip $hostname' >> /etc/hosts"
+        sudo bash -c  "echo '$n_ip $hostname' >> /etc/hosts"
     fi
 }
 
 resolve_host "facebook.com" "8.8.8.8"
+resolve_host "localhost" "127.0.0.2"
