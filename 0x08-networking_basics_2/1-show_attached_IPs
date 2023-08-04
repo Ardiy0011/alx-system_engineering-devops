@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # display all active IPv4 IP addressses
 
-all_ips=$(ip addr | grep 'inet ' | awk '{print $2}')
+all_ips=$(ifconfig | ip addr | grep 'inet ' | awk '{print $2}')
 
 # Display the active IPv4 IPs
 for ip in $all_ips;
