@@ -1,4 +1,6 @@
+#!/usr/bin/pup
+
 package { 'flask':
-  ensure   => '2.1.0',   # Specify the desired version
-  provider => 'pip3',    # Use pip3 as the package provider
+  ensure   => '2.1.0',
+  provider => 'pip3',
 }
