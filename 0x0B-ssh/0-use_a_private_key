@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# establishing coooonnection to secure shell key authentication
+
+server_address="54.157.165.159"
+user="ubuntu"
+
+private_key="~/.ssh/school"
+
+ssh -i "$private_key" "$user@$server_address"
