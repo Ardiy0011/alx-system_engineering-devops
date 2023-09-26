@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
 # transfer a file from our client to a server
 
-if [ "$#" -ne 4 ];
-then
-    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY";
-    exit;
-fi;
-
-# Assign parameters to variables
 PATH_TO_FILE="$1"
 IP="$2"
 USERNAME="$3"
 PATH_TO_SSH_KEY="$4"
 
-if [ $# -ge 4 ];
+if [ "$#" -ne 4 ];
 then
-    scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP":~/
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY";
+    exit;
 else
-    scp -o StrictHostKeyChecking=no "$PATH_TO_FILE" "$USERNAME"@"$IP":~/
+    scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP":~/
 fi;
