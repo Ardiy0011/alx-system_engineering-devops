@@ -1,43 +1,9 @@
 #!/usr/bin/env bash
-# Check if the script is run as root
+#Configure a new Nginx server so that /redirect_me is redirecting to another page
 
-
-if [[ $EUID -ne 0 ]]; then
-  echo "This script must be run as root."
-  exit 1
-fi
-
-# Install Nginx if not already installed
-if ! [ -x "$(command -v nginx)" ]; then
-  apt-get update
-  apt-get install -y nginx
-fi
-
-# Create a backup of the default Nginx configuration
-cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
-
-# Define the new Nginx server block configuration
-cat <<EOL > /etc/nginx/sites-available/default
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    server_name _;
-    
-    location /redirect_me {
-        return 301 http://example.com/new_page; # Replace with your desired redirection URL
-    }
-
-    # Other server configuration...
-}
-EOL
-
-# Test Nginx configuration and reload if successful
-if nginx -t; then
-  systemctl reload nginx
-  echo "Nginx configuration reloaded."
-else
-  echo "Nginx configuration test failed. Restoring the backup."
-  mv /etc/nginx/sites-available/default.bak /etc/nginx/sites-available/default
-  systemctl reload nginx
-  echo "Nginx configuration reverted to the previous state."
-fi
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World" | sudo tee /var/www/html/index
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default    
+sudo service nginx restart
