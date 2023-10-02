@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
 # establishing connection to secure shell key authentication
 
-ssh -i ~/.ssh/school ubuntu@18.234.168.185
+# display your public key file(change path when necessary)
+
+
+# copy public key to the new server(ssh-copy-id username@new_server_ip)
+#ssh-copy-id ubuntu@52.207.71.247
+
+# establish connection to the erver whic now has the public key
+# in your local machine
+# The -i option specifies the identity file (private key) to be used for
+# authentication. In this case, ~/.ssh/school
+ssh -i ~/.ssh/school ubuntu@52.207.71.247
