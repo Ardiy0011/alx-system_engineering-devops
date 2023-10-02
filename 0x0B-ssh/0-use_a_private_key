@@ -5,7 +5,7 @@
 
 
 # copy public key to the new server(ssh-copy-id username@new_server_ip)
-#ssh-copy-id ubuntu@52.207.71.247
+#ssh-copy-id ubuntu@52.207.71.247 
 
 # establish connection to the erver whic now has the public key
 # in your local machine
