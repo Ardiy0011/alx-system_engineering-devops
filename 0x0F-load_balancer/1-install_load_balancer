@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# install and configure haproxy to send traffic to web01 and web 01
+
+sudo apt-get update -y
+sudo apt-get install haproxy -y
+sudo service haproxy start
+
+#define frontend(how the client reaches the loadbalancer)
+echo '
+frontend konect
+	bind *:80
+	default_backend web-backend
+
+
+backend web-backend
+	balance roundrobin
+	server  webserver1 18.234.168.185 check
+	server  webserver2 35.175.132.183 check' | sudo tee -a /etc/haproxy/haproxy.cfg
+
+sudo  service haproxy reload
