@@ -11,7 +11,6 @@ frontend konect
 	bind *:80
 	default_backend web-backend
 
-
 backend web-backend
 	balance roundrobin
 	server  webserver1 18.234.168.185 check
