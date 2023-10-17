@@ -1,8 +1,41 @@
-#!/usr/bin/env bash
-# backup and compress databases
-mysqldump --all-databases -u root --password="$1" > backup.sql
-day=$(date +"%d")
-month=$(date +"%m")
-year=$(date +"%Y")
-file_name="$day-$month-$year.tar.gz"
-tar -czvf "$file_name" backup.sql
+#!/bin/bash
+# Check if the password argument is provided
+
+if [ -z "$1" ]; then
+  echo "Please provide the MySQL root password as an argument."
+  exit 1
+fi
+
+# MySQL root password
+password="$1"
+
+# Current date
+current_date=$(date +"%d-%m-%Y")
+
+# Directory to store the backup
+backup_dir="/path/to/backup/directory"
+
+# MySQL dump file name
+dump_file="$backup_dir/backup.sql"
+
+# Create the backup directory if it doesn't exist
+mkdir -p "$backup_dir"
+
+# Perform the MySQL dump
+mysqldump -u root -p"$password" --all-databases > "$dump_file"
+
+# Check if the dump was successful
+if [ $? -eq 0 ]; then
+  # Compress the dump to a tar.gz archive
+  archive_file="$backup_dir/$current_date.tar.gz"
+  tar -czvf "$archive_file" -C "$backup_dir" backup.sql
+
+  if [ $? -eq 0 ]; then
+    echo "MySQL dump and compression completed successfully."
+    echo "Backup archive saved as $archive_file"
+  else
+    echo "Error: Failed to compress the MySQL dump."
+  fi
+else
+  echo "Error: Failed to create the MySQL dump."
+fi
