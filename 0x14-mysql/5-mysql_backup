@@ -1,6 +1,6 @@
-#!/bin/bash
-# Check if the password argument is provided
+#!/usr/bin/env bash
 
+# Check if the password argument is provided
 if [ -z "$1" ]; then
   echo "Please provide the MySQL root password as an argument."
   exit 1
@@ -9,26 +9,20 @@ fi
 # MySQL root password
 password="$1"
 
-# Current date
-current_date=$(date +"%d-%m-%Y")
-
-# Directory to store the backup
-backup_dir="/path/to/backup/directory"
-
-# MySQL dump file name
-dump_file="$backup_dir/backup.sql"
-
-# Create the backup directory if it doesn't exist
-mkdir -p "$backup_dir"
+# Create a temporary directory
+temp_dir=$(mktemp -d)
 
 # Perform the MySQL dump
-mysqldump -u root -p"$password" --all-databases > "$dump_file"
+mysqldump --all-databases -u root --password="$password" > "$temp_dir/backup.sql"
 
 # Check if the dump was successful
 if [ $? -eq 0 ]; then
+  # Current date
+  current_date=$(date +"%d-%m-%Y")
+
   # Compress the dump to a tar.gz archive
-  archive_file="$backup_dir/$current_date.tar.gz"
-  tar -czvf "$archive_file" -C "$backup_dir" backup.sql
+  archive_file="$current_date.tar.gz"
+  tar -czvf "$archive_file" -C "$temp_dir" backup.sql
 
   if [ $? -eq 0 ]; then
     echo "MySQL dump and compression completed successfully."
@@ -39,3 +33,6 @@ if [ $? -eq 0 ]; then
 else
   echo "Error: Failed to create the MySQL dump."
 fi
+
+# Clean up the temporary directory
+rm -r "$temp_dir"
