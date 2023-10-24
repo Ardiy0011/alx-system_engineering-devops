@@ -22,7 +22,7 @@ def call_id(user_id):
     """iterate through toda and increment by 1 if completed"""
     done = sum(1 for todo in todos_data if todo["completed"] is True)
 
-    print(f'Employee {e_name} is done with tasks ({done}/{total}):')
+    print(f'Employee {e_name} is done with tasks({done}/{total}):')
     for todo in todos_data:
         if todo["completed"] is True:
             print(f"\t{todo['title']}")
