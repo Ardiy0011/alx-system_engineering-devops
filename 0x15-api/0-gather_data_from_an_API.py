@@ -25,7 +25,7 @@ def call_id(user_id):
     print(f'Employee {e_name} is done with tasks({done}/{total}):')
     for todo in todos_data:
         if todo["completed"] is True:
-            print(f"\t{todo['title']}")
+            print(f"\t {todo['title']}")
 
 
 call_id(user_id)
