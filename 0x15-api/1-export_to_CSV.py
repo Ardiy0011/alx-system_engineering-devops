@@ -1,23 +1,20 @@
 #!/usr/bin/python3
-"""
-A Script that, uses a REST API, for a given employee ID, returns
-information about his/her TODO list progress
-exporting data in the CSV format.
-"""
+"""Module that makes an API request and exports data to CSV"""
+
 
 import csv
 import json
 import requests
-from sys import argv
+import sys
 
 
 if __name__ == "__main__":
 
     sessionReq = requests.Session()
 
-    idEmp = argv[1]
-    idURL = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(idEmp)
-    nameURL = 'https://jsonplaceholder.typicode.com/users/{}'.format(idEmp)
+    idEmp = sys.argv[1]
+    idURL = f'https://jsonplaceholder.typicode.com/users/{idEmp}/todos'
+    nameURL = f'https://jsonplaceholder.typicode.com/users/{idEmp}'
 
     employee = sessionReq.get(idURL)
     employeeName = sessionReq.get(nameURL)
