@@ -3,19 +3,23 @@
 import requests
 import sys
 
-user_id = sys.argv[1]
 
 
-def call_id(user_id):
+def call_id():
     """make an API request to user and todo endpoints"""
-    api_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    tdurl = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+    api_url = f"https://jsonplaceholder.typicode.com/users"
+    tdurl = f"https://jsonplaceholder.typicode.com/todos"
 
     response = requests.get(api_url)
     data = response.json()
     print(f"first insance of data:{data}")
     """further filter by name"""
-    e_name = data.get('name')
+    print('==================================================================')
+    print('==================================================================')
+    for user in data:
+        e_name = user['name']
+        
+        print(f"all names: {e_name}")
 
     todos_response = requests.get(tdurl)
     todos_data = todos_response.json()
@@ -29,4 +33,4 @@ def call_id(user_id):
             print(f"\t{todo['title']}")
 
 
-call_id(user_id)
+call_id()

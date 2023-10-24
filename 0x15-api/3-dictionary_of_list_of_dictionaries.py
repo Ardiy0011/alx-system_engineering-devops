@@ -3,10 +3,10 @@
 import requests
 import json
 
+
 def export_employee_todo_to_json():
     api_url = f"https://jsonplaceholder.typicode.com/users"
     todos_url = f"https://jsonplaceholder.typicode.com/todos"
-
 
     """Make an API request to get user dat"""
     user_response = requests.get(api_url)
