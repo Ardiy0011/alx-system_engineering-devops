@@ -39,7 +39,7 @@ def export_employee_todo_to_json():
         all_user_tasks[user_id] = user_tasks
 
     with open(json_filename, mode='w') as json_file:
-        json.dump(all_user_tasks, json_file, indent=4)
+        json.dump(all_user_tasks, json_file)
 
 
 export_employee_todo_to_json()
