@@ -8,6 +8,7 @@ user_id = sys.argv[1]
 
 
 def export_employee_todo_to_json(user_id):
+    """export todo to json format"""
     api_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
     todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
 

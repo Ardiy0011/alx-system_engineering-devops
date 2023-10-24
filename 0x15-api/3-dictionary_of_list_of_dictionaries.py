@@ -5,6 +5,7 @@ import json
 
 
 def export_employee_todo_to_json():
+    """export to json format"""
     api_url = f"https://jsonplaceholder.typicode.com/users"
     todos_url = f"https://jsonplaceholder.typicode.com/todos"
 
