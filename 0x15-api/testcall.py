@@ -7,12 +7,14 @@ import sys
 
 def call_id():
     """make an API request to user and todo endpoints"""
-    api_url = f"https://jsonplaceholder.typicode.com/users"
+    api_url = f"https://jsonplaceholder.typicode.com/users/"
     tdurl = f"https://jsonplaceholder.typicode.com/todos"
 
     response = requests.get(api_url)
     data = response.json()
-    print(f"first insance of data:{data}")
+    """further filter by name"""
+    ename = data.get('name')
+    print(f"first insance of data:{ename}")
     """further filter by name"""
     print('==================================================================')
     print('==================================================================')

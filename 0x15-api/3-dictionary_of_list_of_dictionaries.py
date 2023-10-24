@@ -40,7 +40,5 @@ def export_employee_todo_to_json():
     with open(json_filename, mode='w') as json_file:
         json.dump(all_user_tasks, json_file, indent=4)
 
-    print(f"Data exported to {json_filename}")
-
 
 export_employee_todo_to_json()

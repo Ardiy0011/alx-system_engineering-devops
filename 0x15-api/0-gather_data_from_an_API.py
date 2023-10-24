@@ -13,7 +13,6 @@ def call_id(user_id):
 
     response = requests.get(api_url)
     data = response.json()
-    print(f"first insance of data:{data}")
     """further filter by name"""
     e_name = data.get('name')
 

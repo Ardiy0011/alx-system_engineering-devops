@@ -14,7 +14,7 @@ def export_employee_todo_to_json(user_id):
     """Make an API request to get user data"""
     user_response = requests.get(api_url)
     user_data = user_response.json()
-    employee_name = user_data.get('name')
+    employee_name = user_data.get('username')
 
     """Make an API request to get user's TODOs"""
     todos_response = requests.get(todos_url)
@@ -34,9 +34,7 @@ def export_employee_todo_to_json(user_id):
         })
 
     with open(json_filename, mode='w') as json_file:
-        json.dump({user_id: user_tasks}, json_file, indent=4)
-
-    print(f"Data exported to {json_filename}")
+        json.dump({user_id: user_tasks}, json_file)
 
 
 export_employee_todo_to_json(user_id)
