@@ -1,34 +1,21 @@
 #!/usr/bin/python3
-"""function that retireves all users of a subreddit"""
-import requests
-import sys
+"""
+Contains a function that works with Reddit API
+"""
 
-subredditname = sys.argv[1]
+import requests
 
 
 def number_of_subscribers(subreddit):
     """returns the number of subscribers for a given subreddit"""
-
     if subreddit is None or type(subreddit) is not str:
         return 0
-
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-
     headers = {'User-Agent': '0x16-api_advanced:project:\
-            v1.0.0 (by /u/A. Quarshie)'}
-
-    response = requests.get(url, headers=headers, allow_redirects=False)
-
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data["data"]["subscribers"]
-        return subscribers
-    elif response.status_code == 302:
+            v1.0.0 (by /u/Ajiboye Adeleye Pius)'}
+    data = requests.get(url, headers=headers).json()
+    try:
+        subs = data["data"]["subscribers"]
+        return subs
+    except Exception:
         return 0
-
-
-if len(sys.argv) != 2:
-    print("Usage: python script.py subreddit_name")
-    sys.exit(1)
-
-number_of_subscribers(subredditname)
